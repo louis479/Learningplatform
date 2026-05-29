@@ -71,17 +71,17 @@ django-starter/
 ## Local Setup
 
 1. Clone the repository.
-2. Move into the Django project directory:
+2. Create and activate the project virtual environment from the repository root:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+3. Move into the Django app directory:
 
 ```bash
 cd Learningplatform
-```
-
-3. Create and activate a virtual environment:
-
-```bash
-python3 -m venv ../.venv
-source ../.venv/bin/activate
 ```
 
 4. Install dependencies:
@@ -101,6 +101,8 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
+
+Use `../.venv/bin/activate` only if you are already inside the inner `Learningplatform/` folder. The canonical environment for this repo is the root-level `.venv`.
 
 7. Open the app in your browser:
 

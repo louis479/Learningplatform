@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: swahilipot-learning
+    env: python
+    plan: free
+    rootDir: Learningplatform
+    buildCommand: |
+      pip install -r requirements.txt
+      mkdir -p staticfiles
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    preDeployCommand: python manage.py migrate
+    startCommand: gunicorn Learningplatform.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: CSRF_TRUSTED_ORIGINS
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SECURE_SSL_REDIRECT
+        value: "True"
+      - key: SESSION_COOKIE_SECURE
+        value: "True"
+      - key: CSRF_COOKIE_SECURE
+        value: "True"
+      - key: SECURE_HSTS_SECONDS
+        value: "31536000"
+      - key: SECURE_HSTS_INCLUDE_SUBDOMAINS
+        value: "True"
+      - key: SECURE_HSTS_PRELOAD
+        value: "True"
+      - key: DEFAULT_FROM_EMAIL
+        sync: false

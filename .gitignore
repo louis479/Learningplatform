@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+Learningplatform/**/__pycache__/
+Learningplatform/staticfiles/
+
+.env
+Learningplatform/.env
